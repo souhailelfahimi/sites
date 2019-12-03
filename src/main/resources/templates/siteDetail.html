@@ -1,10 +1,149 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="UTF-8" />
+	<title>Sites Touristique</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/mdb.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+	
+	
 </head>
 <body>
+	<div class="container-fluid h-50 head-index">
+		<div class="flex-center position-ref full-height">
+			<div class="top-right links">
+					<a  th:href="@{/site/addsite}">Add a Site</a> 
+				<a th:href="@{/}">Accueil</a>
+			</div>
+			<div class="content">
+				<div class="title m-b-md">Sites Touristique</div>
+
+				<div class="subtitle">
+					<h2>To discover the closest shops to you...</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+<div class="container mt-5 mb-5">
+	<div class="row mb-5">
+		<div class="col-6">
+			<div class="name">
+				Culpa voluptate tempora quis.
+			</div>
+			<div class="description">
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa voluptate tempora quis, delectus animi quasi voluptatibus quo quas iste cum sint a corporis ad sit temporibus doloremque blanditiis fuga reiciendis?
+			</div>
+		</div>
+		
+		<div class="col-6">
+			<!--Carousel Wrapper-->
+<div id="carousel-example-1z" class="carousel slide carousel-fade" style="width: 100%;height: 500px;" data-ride="carousel">
+
+	<div class="carousel-inner w-100 h-100" role="listbox">
+	  <!--First slide-->
+	  <div class="carousel-item active w-100 h-100">
+		<img class="d-block w-100 h-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"
+		  alt="First slide">
+	  </div>
+	  
+	</div>
+	<!--/.Slides-->
+	<!--Controls-->
+	<a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+	  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	  <span class="sr-only">Previous</span>
+	</a>
+	<a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+	  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	  <span class="sr-only">Next</span>
+	</a>
+	<!--/.Controls-->
+  </div>
+  <!--/.Carousel Wrapper-->
+		</div>
+	</div>
+	<div class="row">
+		<div id="map" style="width: 100%; height: 400px;"></div>
+	</div>
+</div>
+
+
+<!-- Footer -->
+<footer class="page-footer font-small blue">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">Zakaria SALAH-EDDINE & Souhail ELFAHIMI - IRISI </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+
+
+
+<script th:src="@{../js/jquery.min.js}"></script>
+<script th:src="@{../js/popper.min.js}"></script>
+<script th:src="@{../js/bootstrap.min.js}"></script>
+<script th:src="@{../js/mdb.min.js}"></script>
+
+<script>
+	
+	const appendChild = Element.prototype.appendChild;
+	const urlCatchers = [
+		"/AuthenticationService.Authenticate?",
+		"/QuotaService.RecordEvent?"
+	];
+	Element.prototype.appendChild = function (element) {
+		const isGMapScript = element.tagName === 'SCRIPT' && /maps\.googleapis\.com/i.test(element.src);
+		const isGMapAccessScript = isGMapScript && urlCatchers.some(url => element.src.includes(url));
+
+		if (!isGMapAccessScript) {
+			return appendChild.call(this, element);
+		}
+		return element;
+	}
+	var markersArray = [];
+	
+		function myMap() {
+			var mapProp = {
+				center : new google.maps.LatLng(31.634545, -8.1479382),
+				zoom : 9,
+			};
+			var map = new google.maps.Map(document.getElementById("map"),
+					mapProp);
+			
+			google.maps.event.addListener(map, 'click', function(event) {
+				placeMarker(event);
+				var marker = new google.maps.Marker({
+					position: event.latLng,
+					map: map,
+					title: 'Hello World!'
+				  });
+				markersArray.push(marker);
+				
+			});
+	
+		}
+		
+		 function placeMarker(event) {
+			 
+			 var currentMarker = null;
+			 
+			 
+				document.getElementById("x").value=event.latLng.lat();
+				document.getElementById("y").value=event.latLng.lng();
+				for(var i=0;i<markersArray.length;i++)  markersArray[i].setMap(null);
+				currentMarker = new google.maps.Marker({
+					position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng())
+				});
+				markersArray.push(currentMarker);
+		}
+		
+		
+	</script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwTzZGfBLcDQl-E1phtP6dslBjjxEMUvo&callback=myMap"></script>
 
 </body>
 </html>

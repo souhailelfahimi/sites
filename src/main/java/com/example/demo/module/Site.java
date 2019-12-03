@@ -67,6 +67,10 @@ public class Site implements Serializable{
 	public Site() {
 		super();
 	}
+	@Override
+	public String toString() {
+		return "Site [id=" + id + ", nom=" + nom + ", description=" + description + ", x=" + x + ", y=" + y + "]";
+	}
 	
-
+	
 }
