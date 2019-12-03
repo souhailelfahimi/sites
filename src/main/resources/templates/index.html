@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sites Touristique</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/mdb.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<div class="container-fluid h-50 head-index">
+		<div class="flex-center position-ref full-height">
+			<div class="top-right links">
+				<a href="">Title 1</a> 
+				<a href="">Title 2</a>
+			</div>
+			<div class="content">
+				<div class="title m-b-md">Sites Touristique</div>
+
+				<div class="subtitle">
+					<h2>To discover the closest shops to you...</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container mt-4">
+		<div class="row index-cards">
+		
+		
+		<tr th:each="site: ${sites}">
+		
+   					 
+   					 <div class="col-4">
+				<!-- Card -->
+				<div class="card">
+
+					<!-- Card image -->
+					<div class="view overlay">
+						<img class="card-img-top"
+							th:src="@{'/uploadingDir/' + ${site.photos.get(0).path}}"
+							alt="Card image cap"> <a href="#">
+							<div class="mask rgba-white-slight"></div>
+						</a>
+					</div>
+
+					<!-- Card content -->
+					<div class="card-body">
+
+						<!-- Title -->
+						<h4 class="card-title" th:text="${site.nom}">Card title</h4>
+						<!-- Text -->
+						<p class="card-text" th:text="${site.description}">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+						<!-- Button -->
+
+					</div>
+
+				</div>
+				<!-- Card -->
+			</div>
+    
+			</tr>
+		
+		
+		
+			
+
+
+		</div>
+	</div>
+
+</body>
+</html>

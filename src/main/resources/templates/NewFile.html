@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+
+	<form  action="/sites/addsite"  method="post" enctype="multipart/form-data">
+		<input type="text" th:value="${site.nom}"  placeholder="Name" name="nom"/>
+		<input type="text" th:value="${site.description}"  placeholder="description" name="description"/>
+		<input type="number" th:value="${site.x}" name="x"/>
+		<input type="number" th:value="${site.y}"  name="y"/>
+		<input type="file" name="uploadingFiles" multiple>
+		<input type="submit" name="name"/>
+	</form>
+</body>
+</html>

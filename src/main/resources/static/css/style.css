@@ -1,0 +1,41 @@
+html, body{
+	height: 100%;
+	width: 100%;
+}
+
+.head-index{
+	background-image: url('http://localhost:8045/img/bg1.jpg');
+	background-size:cover;
+}
+
+.full-height {
+                height: 50vh;
+            }
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+
+.title {
+    font-size: 84px;
+}
